@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: UseNode@1
+    inputs:
+      version: '18.x'
+
+  - script: |
+      npm install
+      npm run build
+      npm test
+    displayName: Build and Test
