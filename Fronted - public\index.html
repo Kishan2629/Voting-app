@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voting App</title>
+</head>
+<body>
+  <h2>Vote for your favorite option</h2>
+
+  /vote
+    <button name="option" value="Option A">Option A</button>
+    <button name="option" value="Option B">Option B</button>
+  </form>
+
+  <h3>Results:</h3>
+  <pre id="results"></pre>
+
+  <script>
+    fetch("/results")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("results").innerText =
+          JSON.stringify(data, null, 2);
+      });
+  </script>
+</body>
+</html>
